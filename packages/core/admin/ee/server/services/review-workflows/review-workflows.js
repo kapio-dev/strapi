@@ -115,16 +115,16 @@ function enableReviewWorkflow({ strapi }) {
       const selectStatement = connection
         .select({
           [idColumn.name]: 'entity.id',
-          field: connection.raw('?', [ENTITY_STAGE_ATTRIBUTE]),
+          field: strapi.db.connection.raw('?', [ENTITY_STAGE_ATTRIBUTE]),
           order: 1,
           [joinTable.joinColumn.name]: firstStage.id,
-          [typeColumn.name]: connection.raw('?', [contentTypeUID]),
+          [typeColumn.name]: strapi.db.connection.raw('?', [contentTypeUID]),
         })
         .leftJoin(`${joinTable.name} AS jointable`, function () {
           this.on('entity.id', '=', `jointable.${idColumn.name}`).andOn(
             `jointable.${typeColumn.name}`,
             '=',
-            connection.raw('?', [contentTypeUID])
+            strapi.db.connection.raw('?', [contentTypeUID])
           );
         })
         .where(`jointable.${idColumn.name}`, null)
@@ -134,7 +134,7 @@ function enableReviewWorkflow({ strapi }) {
       const columnsToInsert = [
         idColumn.name,
         'field',
-        connection.raw('??', ['order']),
+        strapi.db.connection.raw('??', ['order']),
         joinTable.joinColumn.name,
         typeColumn.name,
       ];
@@ -142,7 +142,7 @@ function enableReviewWorkflow({ strapi }) {
       // Insert rows for all entries of the content type that do not have a
       // default stage
       await connection(joinTable.name).insert(
-        connection.raw(
+        strapi.db.connection.raw(
           `(${columnsToInsert.join(',')})  ${selectStatement.sql}`,
           selectStatement.bindings
         )
