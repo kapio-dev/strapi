@@ -7632,7 +7632,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@strapi/provider-upload-aws-s3@workspace:packages/providers/upload-aws-s3"
   dependencies:
-    aws-sdk: 2.1287.0
+    aws-sdk: 2.1353.0
     lodash: 4.17.21
   languageName: unknown
   linkType: soft
@@ -10834,9 +10834,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"aws-sdk@npm:2.1287.0":
-  version: 2.1287.0
-  resolution: "aws-sdk@npm:2.1287.0"
+"aws-sdk@npm:2.1353.0":
+  version: 2.1353.0
+  resolution: "aws-sdk@npm:2.1353.0"
   dependencies:
     buffer: 4.9.2
     events: 1.1.1
@@ -10848,7 +10848,7 @@ __metadata:
     util: ^0.12.4
     uuid: 8.0.0
     xml2js: 0.4.19
-  checksum: 528bbddd87b49782f50bfd4763c7d7c2b45f6c71ef3f303c72e0881e2799fff81d7fa24aa09af8e5fd493e9ce396437529d3dd6db6d53cde4ba78bd9ede53cd4
+  checksum: 099efb3148249bc66870360a28a6d9c940b5443dd060c1c7e0806595dae16488a99b58f66b317b0281d98792633fd154add1a29dbfe28d25935cf7cee072d1bb
   languageName: node
   linkType: hard
 
